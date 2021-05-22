@@ -63,6 +63,8 @@ new ImmutableTree<number>(compare)
   .printTreeAsc(); // Print in ascending order
 ```
 
+### Usage in Rescript
+
 ```ocaml
 module FloatTree = ImmutableTree.Make({
   type t = float
