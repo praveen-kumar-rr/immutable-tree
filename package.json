@@ -1,5 +1,5 @@
 {
-  "name": "@rrpk/immutable-tree",
+  "name": "@rpkumar/immutable-tree",
   "version": "1.0.0",
   "main": "src/immutable-tree.js",
   "scripts": {

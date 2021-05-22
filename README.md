@@ -10,17 +10,17 @@ Tests available!
 ### Installation
 
 - For JS and TS projects
-  - `npm i @rrpk/immutable-tree --save`
+  - `npm i @rpkumar/immutable-tree --save`
 - For Rescript project
-  - `npm i @rrpk/immutable-tree --save`
+  - `npm i @rpkumar/immutable-tree --save`
   - Update bs-dependencies in bsconfig.json
-    - `"bs-dependencies": ["@rrpk/immutable-tree"]`
+    - `"bs-dependencies": ["@rpkumar/immutable-tree"]`
     - Ensure you clean build your rescript project
 
 ### Usage in JS
 
 ```javascript
-import { fromArray, ImmutableTree } from "@rrpk/immutable-tree";
+import { fromArray, ImmutableTree } from "@rpkumar/immutable-tree";
 
 const compare = (a, b) => a - b;
 
@@ -43,7 +43,7 @@ new ImmutableTree(compare)
 ### Usage in TS
 
 ```typescript
-import { fromArray, ImmutableTree } from "@rrpk/immutable-tree";
+import { fromArray, ImmutableTree } from "@rpkumar/immutable-tree";
 
 const compare = (a: number, b: number) => a - b;
 
