@@ -86,13 +86,13 @@ Well, then is it cloning the entire tree? That must be consuming high memory rig
 
 Check the below image. Consider that we want to insert a new value **2.5** to the tree **A**. Tree **A** is not directly modified or updated but a new series of nodes are created while traversing from the root to the node where the insertion has happened while still reusing the existing nodes (here node **1** and all its children).
 
-![Immutable Tree Insertion](https://github.com/praveen-kumar-rr/immutable-tree/blob/master/immutable-tree-insert.jpg?raw=true)
+![Immutable Tree Insertion](https://github.com/praveen-kumar-rr/readme-images/blob/main/immutable-tree-insert.jpg?raw=true)
 
 ### Deletion :
 
 Consider that we want to delete a value **4** from the tree **A**. Tree **A** is not directly modified or updated but again a new series of nodes are created while traversing from the root to the node that has to be deleted, while still reusing the existing nodes (here node **1** and all its children).
 
-![Immutable Tree Deletion](https://github.com/praveen-kumar-rr/immutable-tree/blob/master/immutable-tree-delete.jpg?raw=true)
+![Immutable Tree Deletion](https://github.com/praveen-kumar-rr/readme-images/blob/main/immutable-tree-delete.jpg?raw=true)
 
 ### Why Immutable Tree?
 
