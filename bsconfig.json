@@ -1,6 +1,6 @@
 {
-  "name": "immutable-tree",
-  "version": "0.0.1",
+  "name": "@rrpk/immutable-tree",
+  "version": "1.0.0",
   "sources": [
     {
       "dir": "src",

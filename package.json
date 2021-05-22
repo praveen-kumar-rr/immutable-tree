@@ -1,5 +1,5 @@
 {
-  "name": "immutable-tree",
+  "name": "@rrpk/immutable-tree",
   "version": "1.0.0",
   "main": "src/immutable-tree.js",
   "scripts": {
@@ -9,13 +9,18 @@
     "test-re": "node test/ImmutableTreeTest.bs.js",
     "test-js": "node test/immutable-tree.test.js",
     "test": "npm run test-re && npm run test-js",
-    "prepublish": "npm test"
+    "prepublishOnly": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/praveen-kumar-rr/immutable-tree"
   },
   "keywords": [
     "rescript",
     "javascript",
     "typescript",
-    "immutable"
+    "immutable",
+    "tree"
   ],
   "author": "Praveenkumar (https://github.com/praveen-kumar-rr)",
   "license": "MIT",
