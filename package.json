@@ -1,0 +1,29 @@
+{
+  "name": "immutable-tree",
+  "version": "1.0.0",
+  "main": "src/immutable-tree.js",
+  "scripts": {
+    "build": "rescript",
+    "clean": "rescript clean -with-deps",
+    "start": "rescript build -w",
+    "test-re": "node test/ImmutableTreeTest.bs.js",
+    "test-js": "node test/immutable-tree.test.js",
+    "test": "npm run test-re && npm run test-js",
+    "prepublish": "npm test"
+  },
+  "keywords": [
+    "rescript",
+    "javascript",
+    "typescript",
+    "immutable"
+  ],
+  "author": "Praveenkumar (https://github.com/praveen-kumar-rr)",
+  "license": "MIT",
+  "dependencies": {
+    "@rescript/std": "^9.0.0",
+    "rescript": "*"
+  },
+  "devDependencies": {
+    "bs-platform": "^9.0.0"
+  }
+}

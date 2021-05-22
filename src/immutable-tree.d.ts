@@ -1,0 +1,23 @@
+type Tree<T> = {};
+
+export type Comparable<T> = (a: T, b: T) => number;
+
+export class ImmutableTree<T> {
+  constructor(comp: Comparable<T>, node?: Tree<T>);
+  insert: (t: T) => ImmutableTree<T>;
+  search: (t: T) => T | undefined;
+  deleteNode: (t: T) => ImmutableTree<T>;
+  update: (a: T, b: T) => ImmutableTree<T>;
+  printTreeAsc: () => void;
+  printTreeDesc: () => void;
+  getColor: () => "Black" | "Red" | undefined;
+  getData: () => T | undefined;
+  getMin: () => T | undefined;
+  getMax: () => T | undefined;
+  toArray: () => T[];
+  fold<A>(f: (a: A, t: T) => A, i: A): A;
+  foldLeft<A>(f: (a: A, t: T) => A, i: A): A;
+  foldRight<A>(f: (a: A, t: T) => A, i: A): A;
+}
+
+export function fromArray<T>(comp: Comparable<T>, array: T[]): ImmutableTree<T>;
