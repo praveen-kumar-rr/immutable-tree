@@ -15,6 +15,7 @@ Tests available!
   - `npm i @rrpk/immutable-tree --save`
   - Update bs-dependencies in bsconfig.json
     - `"bs-dependencies": ["@rrpk/immutable-tree"]`
+    - Ensure you clean build your rescript project
 
 ### Usage in JS
 
