@@ -83,6 +83,52 @@ open FloatTree
 fromArray([10., 20., 30., 40.])->printTreeDesc
 ```
 
+## Apis :
+
+_insert_:  
+ Insert element into the tree
+
+_search_:  
+ Search for an element
+
+_deleteNode_:  
+ Delete node from tree
+
+_update_:  
+ Update an element based on the provided `compare` function
+
+_printTreeAsc_:  
+ Prints the data in the tree in `ascending` order
+
+_printTreeDesc_:  
+ Prints the data in the tree in `descending` order
+
+_getMin_:  
+ Get the minimum value from the tree
+
+_getMax_:  
+ Get the maximum value from the tree
+
+_fromArray_:  
+ Create tree from a given array
+
+_toArray_:  
+ Convert to array from tree
+
+_fold_:  
+ fold on values of the tree in `ascending` order. Similar to `reduce` function for arrays. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
+_foldLeft_:  
+ An alias for the `fold` function. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
+_foldRight_:  
+ fold on values of the tree in `descending` order. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
+_empty_:  
+ Creates an empty node
+
+---
+
 ## How does Immutable Tree work?
 
 Immutable tree is a fully persistent, balanced, _functional_ binary search tree data structure. It is an immutable Red Black Tree. This means, tree is never modified or updated during any operation. Only a new tree is created with nodes either added or removed.
