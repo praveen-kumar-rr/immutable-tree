@@ -15,6 +15,9 @@ export class ImmutableTree<T> {
   getMin: () => T | undefined;
   getMax: () => T | undefined;
   toArray: () => T[];
+  traverseInOrder<A>(f: (a: A, t: T) => A, i: A): A;
+  traversePreOrder<A>(f: (a: A, t: T) => A, i: A): A;
+  traversePostOrder<A>(f: (a: A, t: T) => A, i: A): A;
   fold<A>(f: (a: A, t: T) => A, i: A): A;
   foldLeft<A>(f: (a: A, t: T) => A, i: A): A;
   foldRight<A>(f: (a: A, t: T) => A, i: A): A;

@@ -55,6 +55,18 @@ class ImmutableTree {
     return this.#immTree.toArray(this.#root);
   }
 
+  traverseInOrder(fn, value) {
+    return this.#immTree.traverseInOrder(this.#root, fn, value);
+  }
+
+  traversePreOrder(fn, value) {
+    return this.#immTree.traversePreOrder(this.#root, fn, value);
+  }
+
+  traversePostOrder(fn, value) {
+    return this.#immTree.traversePostOrder(this.#root, fn, value);
+  }
+
   fold(fn, value) {
     return this.#immTree.fold(this.#root, fn, value);
   }

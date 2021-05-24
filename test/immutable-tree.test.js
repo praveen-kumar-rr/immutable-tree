@@ -59,3 +59,14 @@ test('Update operation', () => {
     assert.deepEqual(tree.update(benjamin, chris).search(benjamin), chris);
     assert.deepEqual(tree.search(chris), benjamin);
 });
+
+test('Traverse tests', () => {
+    const compare = (a, b) => a - b;
+    const treeFromArray = fromArray(compare, [1, 2, 3, 4, 5]);
+
+    const concatArray = (acc, a) => [...acc, a];
+
+    assert.deepEqual(treeFromArray.traverseInOrder(concatArray, []), [1, 2, 3, 4, 5]);
+    assert.deepEqual(treeFromArray.traversePreOrder(concatArray, []), [2, 1, 4, 3, 5]);
+    assert.deepEqual(treeFromArray.traversePostOrder(concatArray, []), [1, 3, 5, 4, 2]);
+});

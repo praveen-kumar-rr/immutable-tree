@@ -83,7 +83,7 @@ open FloatTree
 fromArray([10., 20., 30., 40.])->printTreeDesc
 ```
 
-## Apis :
+## API :
 
 _insert_:  
  Insert element into the tree
@@ -114,6 +114,15 @@ _fromArray_:
 
 _toArray_:  
  Convert to array from tree
+
+_traverseInOrder_:  
+ Does `In Order` Traversal on the tree . Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
+_traversePreOrder_:  
+ Does `Pre Order` Traversal on the tree . Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
+_traversePostOrder_:  
+ Does `Post Order` Traversal on the tree . Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
 
 _fold_:  
  fold on values of the tree in `ascending` order. Similar to `reduce` function for arrays. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
