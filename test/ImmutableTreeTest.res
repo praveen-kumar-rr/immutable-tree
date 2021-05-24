@@ -159,3 +159,17 @@ module PersonTree = ImmutableTree.Make(
   assert (tree->search(benjamin) == Some(chris))
   assert (empty()->update(chris, benjamin)->search(chris) == None)
 })
+
+"Traversal Test"->test(() => {
+  open FloatTree
+
+  let arr = [1., 2., 3., 4., 5.]
+  let result = arr->fromArray->traverseInOrder((acc, d) => Js.Array.concat([d], acc), [])
+  assert (result == arr)
+
+  let result = arr->fromArray->traversePreOrder((acc, d) => Js.Array.concat([d], acc), [])
+  assert (result == [2., 1., 4., 3., 5.])
+
+  let result = arr->fromArray->traversePostOrder((acc, d) => Js.Array.concat([d], acc), [])
+  assert (result == [1., 3., 5., 4., 2.])
+})

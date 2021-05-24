@@ -474,6 +474,71 @@ test("Update test", (function (param) {
             };
       }));
 
+test("Traversal Test", (function (param) {
+        var arr = [
+          1,
+          2,
+          3,
+          4,
+          5
+        ];
+        var result = Curry._3(FloatTree.traverseInOrder, Curry._1(FloatTree.fromArray, arr), (function (acc, d) {
+                return acc.concat([d]);
+              }), []);
+        if (!Caml_obj.caml_equal(result, arr)) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  168,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        var result$1 = Curry._3(FloatTree.traversePreOrder, Curry._1(FloatTree.fromArray, arr), (function (acc, d) {
+                return acc.concat([d]);
+              }), []);
+        if (!Caml_obj.caml_equal(result$1, [
+                2,
+                1,
+                4,
+                3,
+                5
+              ])) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  171,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        var result$2 = Curry._3(FloatTree.traversePostOrder, Curry._1(FloatTree.fromArray, arr), (function (acc, d) {
+                return acc.concat([d]);
+              }), []);
+        if (Caml_obj.caml_equal(result$2, [
+                1,
+                3,
+                5,
+                4,
+                2
+              ])) {
+          return ;
+        }
+        throw {
+              RE_EXN_ID: "Assert_failure",
+              _1: [
+                "ImmutableTreeTest.res",
+                174,
+                2
+              ],
+              Error: new Error()
+            };
+      }));
+
 exports.timeIt = timeIt;
 exports.test = test;
 exports.FloatTree = FloatTree;

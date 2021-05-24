@@ -14,6 +14,9 @@ module type Tree = {
   let getMax: t => option<a>
   let fromArray: array<a> => t
   let toArray: t => array<a>
+  let traverseInOrder: (t, ('a, a) => 'a, 'a) => 'a
+  let traversePreOrder: (t, ('a, a) => 'a, 'a) => 'a
+  let traversePostOrder: (t, ('a, a) => 'a, 'a) => 'a
   let fold: (t, ('a, a) => 'a, 'a) => 'a
   let foldLeft: (t, ('a, a) => 'a, 'a) => 'a
   let foldRight: (t, ('a, a) => 'a, 'a) => 'a

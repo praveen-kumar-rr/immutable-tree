@@ -14,6 +14,9 @@ module type Tree = {
   let getMax: t => option<a>
   let fromArray: array<a> => t
   let toArray: t => array<a>
+  let traverseInOrder: (t, ('a, a) => 'a, 'a) => 'a
+  let traversePreOrder: (t, ('a, a) => 'a, 'a) => 'a
+  let traversePostOrder: (t, ('a, a) => 'a, 'a) => 'a
   let fold: (t, ('a, a) => 'a, 'a) => 'a
   let foldLeft: (t, ('a, a) => 'a, 'a) => 'a
   let foldRight: (t, ('a, a) => 'a, 'a) => 'a
@@ -617,18 +620,38 @@ module Make = (C: Comparable): (Tree with type a = C.t) => {
     }
   }
 
-  let rec fold = (tree, fn, acc) => {
+  let rec traverseInOrder = (tree, fn, acc) =>
     switch tree {
     | Leaf => acc
     | TreeNode(_, l, d, r) =>
-      let leftResult = l->fold(fn, acc)
-      let result = fn(leftResult, d)
-      r->fold(fn, result)
+      let leftResult = l->traverseInOrder(fn, acc)
+      let nextResult = leftResult->fn(d)
+      r->traverseInOrder(fn, nextResult)
     | DoubleBlack(_, _, _) => raiseImbalance()
     }
-  }
 
-  let foldLeft = fold
+  let rec traversePreOrder = (tree, fn, acc) =>
+    switch tree {
+    | Leaf => acc
+    | TreeNode(_, l, d, r) =>
+      let nextResult = acc->fn(d)
+      let leftResult = l->traversePreOrder(fn, nextResult)
+      r->traversePreOrder(fn, leftResult)
+    | DoubleBlack(_, _, _) => raiseImbalance()
+    }
+
+  let rec traversePostOrder = (tree, fn, acc) =>
+    switch tree {
+    | Leaf => acc
+    | TreeNode(_, l, d, r) =>
+      let leftResult = l->traversePostOrder(fn, acc)
+      let rightResult = r->traversePostOrder(fn, leftResult)
+      rightResult->fn(d)
+    | DoubleBlack(_, _, _) => raiseImbalance()
+    }
+
+  let fold = traverseInOrder
+  let foldLeft = traverseInOrder
   let rec foldRight = (tree, fn, acc) => {
     switch tree {
     | Leaf => acc

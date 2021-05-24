@@ -1434,7 +1434,7 @@ function Make(C) {
       return /* Leaf */0;
     }
   };
-  var fold = function (_tree, fn, _acc) {
+  var traverseInOrder = function (_tree, fn, _acc) {
     while(true) {
       var acc = _acc;
       var tree = _tree;
@@ -1444,12 +1444,40 @@ function Make(C) {
       if (tree.TAG !== /* TreeNode */0) {
         return Pervasives.failwith("Imbalanced Tree detected");
       }
-      var leftResult = fold(tree._1, fn, acc);
-      var result = Curry._2(fn, leftResult, tree._2);
-      _acc = result;
+      var leftResult = traverseInOrder(tree._1, fn, acc);
+      var nextResult = Curry._2(fn, leftResult, tree._2);
+      _acc = nextResult;
       _tree = tree._3;
       continue ;
     };
+  };
+  var traversePreOrder = function (_tree, fn, _acc) {
+    while(true) {
+      var acc = _acc;
+      var tree = _tree;
+      if (typeof tree === "number") {
+        return acc;
+      }
+      if (tree.TAG !== /* TreeNode */0) {
+        return Pervasives.failwith("Imbalanced Tree detected");
+      }
+      var nextResult = Curry._2(fn, acc, tree._2);
+      var leftResult = traversePreOrder(tree._1, fn, nextResult);
+      _acc = leftResult;
+      _tree = tree._3;
+      continue ;
+    };
+  };
+  var traversePostOrder = function (tree, fn, acc) {
+    if (typeof tree === "number") {
+      return acc;
+    }
+    if (tree.TAG !== /* TreeNode */0) {
+      return Pervasives.failwith("Imbalanced Tree detected");
+    }
+    var leftResult = traversePostOrder(tree._1, fn, acc);
+    var rightResult = traversePostOrder(tree._3, fn, leftResult);
+    return Curry._2(fn, rightResult, tree._2);
   };
   var foldRight = function (_tree, fn, _acc) {
     while(true) {
@@ -1469,7 +1497,7 @@ function Make(C) {
     };
   };
   var printTreeAsc = function (__x) {
-    return fold(__x, (function (param, a) {
+    return traverseInOrder(__x, (function (param, a) {
                   console.log(a);
                   
                 }), undefined);
@@ -1484,7 +1512,7 @@ function Make(C) {
     return __x.reduce(insert, /* Leaf */0);
   };
   var toArray = function (__x) {
-    return fold(__x, (function (acc, a) {
+    return traverseInOrder(__x, (function (acc, a) {
                   return acc.concat([a]);
                 }), []);
   };
@@ -1502,8 +1530,11 @@ function Make(C) {
           getMax: getMax,
           fromArray: fromArray,
           toArray: toArray,
-          fold: fold,
-          foldLeft: fold,
+          traverseInOrder: traverseInOrder,
+          traversePreOrder: traversePreOrder,
+          traversePostOrder: traversePostOrder,
+          fold: traverseInOrder,
+          foldLeft: traverseInOrder,
           foldRight: foldRight,
           empty: empty
         };
