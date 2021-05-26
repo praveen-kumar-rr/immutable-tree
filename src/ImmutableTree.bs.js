@@ -2,6 +2,7 @@
 'use strict';
 
 var Curry = require("@rescript/std/lib/js/curry.js");
+var Belt_List = require("@rescript/std/lib/js/belt_List.js");
 var Pervasives = require("@rescript/std/lib/js/pervasives.js");
 var Caml_option = require("@rescript/std/lib/js/caml_option.js");
 
@@ -293,6 +294,38 @@ function Make(C) {
         
       }
     };
+  };
+  var searchRange = function (tree, start, end) {
+    var _searchRange = function (_tree, start, end, _acc) {
+      while(true) {
+        var acc = _acc;
+        var tree = _tree;
+        if (typeof tree === "number") {
+          return acc;
+        }
+        if (tree.TAG !== /* TreeNode */0) {
+          return Pervasives.failwith("Imbalanced Tree detected");
+        }
+        var d = tree._2;
+        var match = comp(d, start);
+        var match$1 = comp(d, end);
+        if (match >= 2) {
+          return acc;
+        }
+        if (match$1 === 1) {
+          return acc;
+        }
+        var leftResult = _searchRange(tree._1, start, end, acc);
+        var nextAcc = {
+          hd: d,
+          tl: leftResult
+        };
+        _acc = nextAcc;
+        _tree = tree._3;
+        continue ;
+      };
+    };
+    return Belt_List.toArray(Belt_List.reverse(_searchRange(tree, start, end, /* [] */0)));
   };
   var update = function (tree, old, next) {
     if (typeof tree === "number") {
@@ -1519,6 +1552,7 @@ function Make(C) {
   return {
           insert: insert,
           search: search,
+          searchRange: searchRange,
           deleteNode: deleteNode,
           update: update,
           printTreeAsc: printTreeAsc,

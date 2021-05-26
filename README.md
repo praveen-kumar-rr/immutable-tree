@@ -1,11 +1,11 @@
 # Immutable Tree
 
-_Immutable_, _fully persistent_, and _balanced_ binary search tree data structure implementation in pure js.
+Immutable, fully persistent, and balanced binary search tree data structure implementation in pure js.
 
 - Can run in browser and nodejs environments.
 - Can be used in js, ts and rescript projects.
 
-Tests available!
+Tests available! Time complexity for insertion, deletion and search is `O(log n)` since this is an implementation of Red Black Tree.
 
 ### Installation
 
@@ -90,6 +90,9 @@ _insert_:
 
 _search_:  
  Search for an element
+
+_searchRange_:  
+ Search for all the elements in a particular range. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
 
 _deleteNode_:  
  Delete node from tree

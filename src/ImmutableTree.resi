@@ -3,6 +3,7 @@ module type Tree = {
   type a
   let insert: (t, a) => t
   let search: (t, a) => option<a>
+  let searchRange: (t, a, a) => array<a>
   let deleteNode: (t, a) => t
   let update: (t, a, a) => t
   let printTreeAsc: t => unit

@@ -19,6 +19,10 @@ class ImmutableTree {
     return this.#immTree.search(this.#root, t);
   }
 
+  searchRange(t1, t2) {
+    return this.#immTree.searchRange(this.#root, t1, t2);
+  }
+
   deleteNode(t) {
     return new ImmutableTree(this.#comp, this.#immTree.deleteNode(this.#root, t));
   }

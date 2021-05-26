@@ -173,3 +173,15 @@ module PersonTree = ImmutableTree.Make(
   let result = arr->fromArray->traversePostOrder((acc, d) => Js.Array.concat([d], acc), [])
   assert (result == [1., 3., 5., 4., 2.])
 })
+
+"Range search test"->test(() => {
+  open FloatTree
+
+  let tree = fromArray([1., 2., 3., 4., 5.])
+
+  assert (tree->searchRange(2., 5.) == [2., 3., 4., 5.])
+  assert (tree->searchRange(-1., 2.) == [1., 2.])
+  assert (tree->searchRange(-10., 10.) == [1., 2., 3., 4., 5.])
+  assert (tree->searchRange(-10., -3.) == [])
+  assert (tree->searchRange(6., 10.) == [])
+})

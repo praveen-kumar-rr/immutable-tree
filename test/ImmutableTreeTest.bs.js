@@ -539,6 +539,86 @@ test("Traversal Test", (function (param) {
             };
       }));
 
+test("Range search test", (function (param) {
+        var tree = Curry._1(FloatTree.fromArray, [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]);
+        if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, 2, 5), [
+                2,
+                3,
+                4,
+                5
+              ])) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  182,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, -1, 2), [
+                1,
+                2
+              ])) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  183,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, -10, 10), [
+                1,
+                2,
+                3,
+                4,
+                5
+              ])) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  184,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, -10, -3), [])) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  185,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, 6, 10), [])) {
+          return ;
+        }
+        throw {
+              RE_EXN_ID: "Assert_failure",
+              _1: [
+                "ImmutableTreeTest.res",
+                186,
+                2
+              ],
+              Error: new Error()
+            };
+      }));
+
 exports.timeIt = timeIt;
 exports.test = test;
 exports.FloatTree = FloatTree;

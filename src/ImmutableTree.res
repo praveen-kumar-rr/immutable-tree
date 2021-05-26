@@ -3,6 +3,7 @@ module type Tree = {
   type a
   let insert: (t, a) => t
   let search: (t, a) => option<a>
+  let searchRange: (t, a, a) => array<a>
   let deleteNode: (t, a) => t
   let update: (t, a, a) => t
   let printTreeAsc: t => unit
@@ -155,6 +156,23 @@ module Make = (C: Comparable): (Tree with type a = C.t) => {
       }
     | DoubleBlack(_, _, _) => raiseImbalance()
     }
+
+  let searchRange = (tree, start, end) => {
+    let rec _searchRange = (tree, start, end, acc) =>
+      switch tree {
+      | Leaf => acc
+      | TreeNode(_, l, d, r) =>
+        switch (comp(d, start), comp(d, end)) {
+        | (LT, _) | (_, GT) => acc
+        | (EQ, LT) | (GT, EQ) | (EQ, EQ) | (GT, LT) =>
+          let leftResult = l->_searchRange(start, end, acc)
+          let nextAcc = list{d, ...leftResult}
+          r->_searchRange(start, end, nextAcc)
+        }
+      | DoubleBlack(_, _, _) => raiseImbalance()
+      }
+    tree->_searchRange(start, end, list{})->Belt.List.reverse->Belt.List.toArray
+  }
 
   let rec update = (tree, old, next) =>
     switch tree {
