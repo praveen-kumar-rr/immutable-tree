@@ -139,6 +139,12 @@ _foldRight_:
 _empty_:  
  Creates an empty node
 
+_getLeft_:  
+ Gets left tree of current tree node. This can be used to perform raw iteration over the tree. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
+_getRight_:  
+ Gets right tree of current tree node. This can be used to perform raw iteration the tree. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
 ---
 
 ## How does Immutable Tree work?

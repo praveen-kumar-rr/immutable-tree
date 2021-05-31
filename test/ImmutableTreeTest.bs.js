@@ -5,6 +5,7 @@ var Caml = require("@rescript/std/lib/js/caml.js");
 var Curry = require("@rescript/std/lib/js/curry.js");
 var Caml_obj = require("@rescript/std/lib/js/caml_obj.js");
 var Belt_Array = require("@rescript/std/lib/js/belt_Array.js");
+var Belt_Option = require("@rescript/std/lib/js/belt_Option.js");
 var ImmutableTree = require("../src/ImmutableTree.bs.js");
 var Caml_js_exceptions = require("@rescript/std/lib/js/caml_js_exceptions.js");
 
@@ -613,6 +614,136 @@ test("Range search test", (function (param) {
               _1: [
                 "ImmutableTreeTest.res",
                 186,
+                2
+              ],
+              Error: new Error()
+            };
+      }));
+
+test("Basic operations test", (function (param) {
+        var tree = Curry._1(IntTree.fromArray, [
+              1,
+              2,
+              3
+            ]);
+        if (!Caml_obj.caml_equal(Curry._1(IntTree.getData, tree), 2)) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  195,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (!Caml_obj.caml_equal(Belt_Option.flatMap(Curry._1(IntTree.getLeft, tree), IntTree.getData), 1)) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  196,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (!Caml_obj.caml_equal(Belt_Option.flatMap(Curry._1(IntTree.getRight, tree), IntTree.getData), 3)) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  197,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getRight, tree), IntTree.getRight), IntTree.getData) !== undefined) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  198,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getRight, tree), IntTree.getLeft), IntTree.getData) !== undefined) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  199,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getLeft, tree), IntTree.getLeft), IntTree.getData) !== undefined) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  200,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getLeft, tree), IntTree.getRight), IntTree.getData) !== undefined) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  201,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getLeft, tree), IntTree.getRight), IntTree.getRight) !== undefined) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  202,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getLeft, tree), IntTree.getLeft), IntTree.getRight) !== undefined) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  203,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getRight, tree), IntTree.getRight), IntTree.getLeft) !== undefined) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  204,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getRight, tree), IntTree.getLeft), IntTree.getLeft) === undefined) {
+          return ;
+        }
+        throw {
+              RE_EXN_ID: "Assert_failure",
+              _1: [
+                "ImmutableTreeTest.res",
+                205,
                 2
               ],
               Error: new Error()

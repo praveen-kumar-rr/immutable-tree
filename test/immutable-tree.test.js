@@ -31,6 +31,14 @@ test('Tree operations', () => {
     assert.deepEqual(treeFromArray.deleteNode(100).toArray(), [10, 20, 30]);
     assert.equal(treeFromArray.getColor(), 'Black');
     assert.equal(treeFromArray.getData(), 20);
+
+    assert.equal(treeFromArray.getLeft().getData(), 10);
+    assert.equal(treeFromArray.getRight().getData(), 30);
+    assert.equal(treeFromArray.getRight().getLeft(), undefined);
+    assert.equal(treeFromArray.getRight().getRight(), undefined);
+    assert.equal(treeFromArray.getLeft().getRight(), undefined);
+    assert.equal(treeFromArray.getLeft().getLeft(), undefined);
+
     assert.equal(treeFromArray.fold(strCat, ''), '102030');
     assert.equal(treeFromArray.foldLeft(strCat, ''), '102030');
     assert.equal(treeFromArray.foldRight(strCat, ''), '302010');
@@ -80,4 +88,23 @@ test('Range search tests', () => {
     assert.deepEqual(treeFromArray.searchRange(-10, 10), [1, 2, 3, 4, 5]);
     assert.deepEqual(treeFromArray.searchRange(-10, -3), []);
     assert.deepEqual(treeFromArray.searchRange(6, 10), []);
+});
+
+test('Raw traversal test', () => {
+    const compare = (a, b) => a - b;
+    const treeFromArray = fromArray(compare, [1, 2, 3, 4, 5]);
+
+    // Mutating pre order traversal
+    const results = [];
+    const rawPreOrderTraversal = (t) => {
+        t.getData() && results.push(t.getData())
+        t.getLeft() && rawPreOrderTraversal(t.getLeft());
+        t.getRight() && rawPreOrderTraversal(t.getRight());
+    }
+    rawPreOrderTraversal(treeFromArray);
+
+    const concatArray = (acc, a) => [...acc, a];
+    const traverseResults = treeFromArray.traversePreOrder(concatArray, []);
+
+    assert.deepEqual(results, traverseResults);
 });

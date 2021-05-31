@@ -22,6 +22,8 @@ export class ImmutableTree<T> {
   fold<A>(f: (a: A, t: T) => A, i: A): A;
   foldLeft<A>(f: (a: A, t: T) => A, i: A): A;
   foldRight<A>(f: (a: A, t: T) => A, i: A): A;
+  getLeft(): ImmutableTree<T> | undefined;
+  getRight(): ImmutableTree<T> | undefined;
 }
 
 export function fromArray<T>(comp: Comparable<T>, array: T[]): ImmutableTree<T>;

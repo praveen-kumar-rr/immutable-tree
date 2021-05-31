@@ -82,6 +82,20 @@ class ImmutableTree {
   foldRight(fn, value) {
     return this.#immTree.foldRight(this.#root, fn, value);
   }
+
+  getLeft() {
+    const left = this.#immTree.getLeft(this.#root);
+    return left
+      ? new ImmutableTree(this.#comp, left)
+      : undefined
+  }
+
+  getRight() {
+    const right = this.#immTree.getRight(this.#root);
+    return right
+      ? new ImmutableTree(this.#comp, right)
+      : undefined
+  }
 }
 
 const fromArray = (compare, arr) =>

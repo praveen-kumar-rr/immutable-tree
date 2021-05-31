@@ -185,3 +185,22 @@ module PersonTree = ImmutableTree.Make(
   assert (tree->searchRange(-10., -3.) == [])
   assert (tree->searchRange(6., 10.) == [])
 })
+
+"Basic operations test"->test(() => {
+  open IntTree
+
+  let flatMap = Belt.Option.flatMap
+  let tree = fromArray([1, 2, 3])
+
+  assert (tree->getData == 2->Some)
+  assert (tree->getLeft->flatMap(getData) == 1->Some)
+  assert (tree->getRight->flatMap(getData) == 3->Some)
+  assert (tree->getRight->flatMap(getRight)->flatMap(getData) == None)
+  assert (tree->getRight->flatMap(getLeft)->flatMap(getData) == None)
+  assert (tree->getLeft->flatMap(getLeft)->flatMap(getData) == None)
+  assert (tree->getLeft->flatMap(getRight)->flatMap(getData) == None)
+  assert (tree->getLeft->flatMap(getRight)->flatMap(getRight) == None)
+  assert (tree->getLeft->flatMap(getLeft)->flatMap(getRight) == None)
+  assert (tree->getRight->flatMap(getRight)->flatMap(getLeft) == None)
+  assert (tree->getRight->flatMap(getLeft)->flatMap(getLeft) == None)
+})

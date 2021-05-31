@@ -22,6 +22,8 @@ module type Tree = {
   let foldLeft: (t, ('a, a) => 'a, 'a) => 'a
   let foldRight: (t, ('a, a) => 'a, 'a) => 'a
   let empty: unit => t
+  let getLeft: t => option<t>
+  let getRight: t => option<t>
 }
 
 module type Comparable = {
@@ -680,6 +682,20 @@ module Make = (C: Comparable): (Tree with type a = C.t) => {
     | DoubleBlack(_, _, _) => raiseImbalance()
     }
   }
+
+  let getLeft = tree =>
+    switch tree {
+    | Leaf => None
+    | TreeNode(_, l, _, _) => l->Some
+    | DoubleBlack(_, _, _) => raiseImbalance()
+    }
+
+  let getRight = tree =>
+    switch tree {
+    | Leaf => None
+    | TreeNode(_, _, _, r) => r->Some
+    | DoubleBlack(_, _, _) => raiseImbalance()
+    }
 
   let printTreeAsc = fold(_, ((), a) => Js.log(a), ())
   let printTreeDesc = foldRight(_, ((), a) => Js.log(a), ())

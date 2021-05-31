@@ -22,6 +22,8 @@ module type Tree = {
   let foldLeft: (t, ('a, a) => 'a, 'a) => 'a
   let foldRight: (t, ('a, a) => 'a, 'a) => 'a
   let empty: unit => t
+  let getLeft: t => option<t>
+  let getRight: t => option<t>
 }
 
 module type Comparable = {

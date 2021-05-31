@@ -1529,6 +1529,24 @@ function Make(C) {
       continue ;
     };
   };
+  var getLeft = function (tree) {
+    if (typeof tree === "number") {
+      return ;
+    } else if (tree.TAG === /* TreeNode */0) {
+      return tree._1;
+    } else {
+      return Pervasives.failwith("Imbalanced Tree detected");
+    }
+  };
+  var getRight = function (tree) {
+    if (typeof tree === "number") {
+      return ;
+    } else if (tree.TAG === /* TreeNode */0) {
+      return tree._3;
+    } else {
+      return Pervasives.failwith("Imbalanced Tree detected");
+    }
+  };
   var printTreeAsc = function (__x) {
     return traverseInOrder(__x, (function (param, a) {
                   console.log(a);
@@ -1570,7 +1588,9 @@ function Make(C) {
           fold: traverseInOrder,
           foldLeft: traverseInOrder,
           foldRight: foldRight,
-          empty: empty
+          empty: empty,
+          getLeft: getLeft,
+          getRight: getRight
         };
 }
 
