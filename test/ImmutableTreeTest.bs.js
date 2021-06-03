@@ -736,14 +736,68 @@ test("Basic operations test", (function (param) {
                 Error: new Error()
               };
         }
-        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getRight, tree), IntTree.getLeft), IntTree.getLeft) === undefined) {
+        if (Belt_Option.flatMap(Belt_Option.flatMap(Curry._1(IntTree.getRight, tree), IntTree.getLeft), IntTree.getLeft) !== undefined) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  205,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._1(IntTree.getHeight, Curry._1(IntTree.fromArray, [])) !== 0) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  207,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._1(IntTree.getHeight, Curry._1(IntTree.fromArray, [1])) !== 1) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  208,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._1(IntTree.getHeight, Curry._1(IntTree.fromArray, [
+                    1,
+                    2,
+                    3
+                  ])) !== 2) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  209,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._1(IntTree.getHeight, Curry._1(IntTree.fromArray, [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                  ])) === 3) {
           return ;
         }
         throw {
               RE_EXN_ID: "Assert_failure",
               _1: [
                 "ImmutableTreeTest.res",
-                205,
+                210,
                 2
               ],
               Error: new Error()

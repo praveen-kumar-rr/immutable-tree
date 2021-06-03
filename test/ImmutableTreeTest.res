@@ -203,4 +203,9 @@ module PersonTree = ImmutableTree.Make(
   assert (tree->getLeft->flatMap(getLeft)->flatMap(getRight) == None)
   assert (tree->getRight->flatMap(getRight)->flatMap(getLeft) == None)
   assert (tree->getRight->flatMap(getLeft)->flatMap(getLeft) == None)
+
+  assert (fromArray([])->getHeight == 0)
+  assert (fromArray([1])->getHeight == 1)
+  assert (fromArray([1, 2, 3])->getHeight == 2)
+  assert (fromArray([1, 2, 3, 4, 5])->getHeight == 3)
 })

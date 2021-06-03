@@ -24,6 +24,7 @@ module type Tree = {
   let empty: unit => t
   let getLeft: t => option<t>
   let getRight: t => option<t>
+  let getHeight: t => int
 }
 
 module type Comparable = {
@@ -40,6 +41,7 @@ module Make = (C: Comparable): (Tree with type a = C.t) => {
   type compareResult = EQ | GT | LT
 
   let comp = (a, b) => C.compare(a, b) > 0 ? GT : C.compare(a, b) < 0 ? LT : EQ
+  let max = (a, b) => a > b ? a : a < b ? b : a
 
   let colorName = c =>
     switch c {
@@ -694,6 +696,13 @@ module Make = (C: Comparable): (Tree with type a = C.t) => {
     switch tree {
     | Leaf => None
     | TreeNode(_, _, _, r) => r->Some
+    | DoubleBlack(_, _, _) => raiseImbalance()
+    }
+
+  let rec getHeight = tree =>
+    switch tree {
+    | Leaf => 0
+    | TreeNode(_, l, _, r) => max(l->getHeight, r->getHeight) + 1
     | DoubleBlack(_, _, _) => raiseImbalance()
     }
 

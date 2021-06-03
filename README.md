@@ -145,6 +145,9 @@ _getLeft_:
 _getRight_:  
  Gets right tree of current tree node. This can be used to perform raw iteration over the tree. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
 
+_getHeight_:  
+ Gets height or depth of the current tree. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
 ---
 
 ## How does Immutable Tree work?

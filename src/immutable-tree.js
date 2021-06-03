@@ -96,6 +96,10 @@ class ImmutableTree {
       ? new ImmutableTree(this.#comp, right)
       : undefined
   }
+
+  getHeight() {
+    return this.#immTree.getHeight(this.#root);
+  }
 }
 
 const fromArray = (compare, arr) =>

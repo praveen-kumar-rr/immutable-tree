@@ -51,6 +51,11 @@ test('Tree operations', () => {
     assert.notEqual(treeFromArray.update(10, 100).search(100), 100);
     // Here 100 cannot be equal to 10. So the update never happened
     assert.notEqual(treeFromArray.update(10, 100).search(10), 10);
+
+    assert.equal(fromArray(compare, []).getHeight(), 0)
+    assert.equal(fromArray(compare, [1]).getHeight(), 1)
+    assert.equal(fromArray(compare, [1, 2, 3]).getHeight(), 2)
+    assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getHeight(), 3)
 });
 
 test('Update operation', () => {

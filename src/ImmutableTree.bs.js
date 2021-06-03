@@ -2,6 +2,7 @@
 'use strict';
 
 var Curry = require("@rescript/std/lib/js/curry.js");
+var Caml_obj = require("@rescript/std/lib/js/caml_obj.js");
 var Belt_List = require("@rescript/std/lib/js/belt_List.js");
 var Pervasives = require("@rescript/std/lib/js/pervasives.js");
 var Caml_option = require("@rescript/std/lib/js/caml_option.js");
@@ -14,6 +15,13 @@ function Make(C) {
       return /* LT */2;
     } else {
       return /* EQ */0;
+    }
+  };
+  var max = function (a, b) {
+    if (Caml_obj.caml_greaterthan(a, b) || !Caml_obj.caml_lessthan(a, b)) {
+      return a;
+    } else {
+      return b;
     }
   };
   var empty = function (param) {
@@ -1547,6 +1555,15 @@ function Make(C) {
       return Pervasives.failwith("Imbalanced Tree detected");
     }
   };
+  var getHeight = function (tree) {
+    if (typeof tree === "number") {
+      return 0;
+    } else if (tree.TAG === /* TreeNode */0) {
+      return max(getHeight(tree._1), getHeight(tree._3)) + 1 | 0;
+    } else {
+      return Pervasives.failwith("Imbalanced Tree detected");
+    }
+  };
   var printTreeAsc = function (__x) {
     return traverseInOrder(__x, (function (param, a) {
                   console.log(a);
@@ -1590,7 +1607,8 @@ function Make(C) {
           foldRight: foldRight,
           empty: empty,
           getLeft: getLeft,
-          getRight: getRight
+          getRight: getRight,
+          getHeight: getHeight
         };
 }
 
