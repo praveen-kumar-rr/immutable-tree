@@ -148,6 +148,9 @@ _getRight_:
 _getHeight_:  
  Gets height or depth of the current tree. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
 
+_getLength_:  
+ Gets length or total number of elements in the tree. An empty tree returns 0. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
 ---
 
 ## How does Immutable Tree work?

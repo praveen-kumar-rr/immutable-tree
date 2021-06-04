@@ -790,14 +790,85 @@ test("Basic operations test", (function (param) {
                     3,
                     4,
                     5
-                  ])) === 3) {
+                  ])) !== 3) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  210,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._1(IntTree.getLength, Curry._1(IntTree.fromArray, [])) !== 0) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  212,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._1(IntTree.getLength, Curry._1(IntTree.fromArray, [1])) !== 1) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  213,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._1(IntTree.getLength, Curry._1(IntTree.fromArray, [
+                    1,
+                    2,
+                    3
+                  ])) !== 3) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  214,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._1(IntTree.getLength, Curry._1(IntTree.fromArray, [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                  ])) !== 5) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  215,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Caml_obj.caml_equal(Belt_Option.map(Curry._1(IntTree.getLeft, Curry._1(IntTree.fromArray, [
+                            1,
+                            2,
+                            3,
+                            4,
+                            5
+                          ])), IntTree.getLength), 1)) {
           return ;
         }
         throw {
               RE_EXN_ID: "Assert_failure",
               _1: [
                 "ImmutableTreeTest.res",
-                210,
+                216,
                 2
               ],
               Error: new Error()

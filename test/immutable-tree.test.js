@@ -56,6 +56,12 @@ test('Tree operations', () => {
     assert.equal(fromArray(compare, [1]).getHeight(), 1)
     assert.equal(fromArray(compare, [1, 2, 3]).getHeight(), 2)
     assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getHeight(), 3)
+
+    assert.equal(fromArray(compare, []).getLength(), 0)
+    assert.equal(fromArray(compare, [1]).getLength(), 1)
+    assert.equal(fromArray(compare, [1, 2, 3]).getLength(), 3)
+    assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getLength(), 5)
+    assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getLeft().getLength(), 1)
 });
 
 test('Update operation', () => {

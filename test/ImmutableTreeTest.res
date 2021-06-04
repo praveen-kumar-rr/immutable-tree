@@ -208,4 +208,10 @@ module PersonTree = ImmutableTree.Make(
   assert (fromArray([1])->getHeight == 1)
   assert (fromArray([1, 2, 3])->getHeight == 2)
   assert (fromArray([1, 2, 3, 4, 5])->getHeight == 3)
+
+  assert (fromArray([])->getLength == 0)
+  assert (fromArray([1])->getLength == 1)
+  assert (fromArray([1, 2, 3])->getLength == 3)
+  assert (fromArray([1, 2, 3, 4, 5])->getLength == 5)
+  assert (fromArray([1, 2, 3, 4, 5])->getLeft->Belt.Option.map(getLength) == 1->Some)
 })

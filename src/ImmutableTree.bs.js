@@ -1564,6 +1564,11 @@ function Make(C) {
       return Pervasives.failwith("Imbalanced Tree detected");
     }
   };
+  var getLength = function (__x) {
+    return traverseInOrder(__x, (function (total, param) {
+                  return total + 1 | 0;
+                }), 0);
+  };
   var printTreeAsc = function (__x) {
     return traverseInOrder(__x, (function (param, a) {
                   console.log(a);
@@ -1608,7 +1613,8 @@ function Make(C) {
           empty: empty,
           getLeft: getLeft,
           getRight: getRight,
-          getHeight: getHeight
+          getHeight: getHeight,
+          getLength: getLength
         };
 }
 

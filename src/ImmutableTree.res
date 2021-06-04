@@ -25,6 +25,7 @@ module type Tree = {
   let getLeft: t => option<t>
   let getRight: t => option<t>
   let getHeight: t => int
+  let getLength: t => int
 }
 
 module type Comparable = {
@@ -706,6 +707,7 @@ module Make = (C: Comparable): (Tree with type a = C.t) => {
     | DoubleBlack(_, _, _) => raiseImbalance()
     }
 
+  let getLength = fold(_, (total, _) => total + 1, 0)
   let printTreeAsc = fold(_, ((), a) => Js.log(a), ())
   let printTreeDesc = foldRight(_, ((), a) => Js.log(a), ())
 
