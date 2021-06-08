@@ -177,11 +177,12 @@ module PersonTree = ImmutableTree.Make(
 "Range search test"->test(() => {
   open FloatTree
 
-  let tree = fromArray([1., 2., 3., 4., 5.])
+  let tree = fromArray([0., 1., 2., 3., 4., 5.])
 
   assert (tree->searchRange(2., 5.) == [2., 3., 4., 5.])
-  assert (tree->searchRange(-1., 2.) == [1., 2.])
-  assert (tree->searchRange(-10., 10.) == [1., 2., 3., 4., 5.])
+  assert (tree->searchRange(-1., 2.) == [0., 1., 2.])
+  assert (tree->searchRange(0., 2.) == [0., 1., 2.])
+  assert (tree->searchRange(-10., 10.) == [0., 1., 2., 3., 4., 5.])
   assert (tree->searchRange(-10., -3.) == [])
   assert (tree->searchRange(6., 10.) == [])
 })

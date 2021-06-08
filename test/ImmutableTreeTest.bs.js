@@ -542,6 +542,7 @@ test("Traversal Test", (function (param) {
 
 test("Range search test", (function (param) {
         var tree = Curry._1(FloatTree.fromArray, [
+              0,
               1,
               2,
               3,
@@ -565,6 +566,7 @@ test("Range search test", (function (param) {
               };
         }
         if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, -1, 2), [
+                0,
                 1,
                 2
               ])) {
@@ -578,12 +580,10 @@ test("Range search test", (function (param) {
                 Error: new Error()
               };
         }
-        if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, -10, 10), [
+        if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, 0, 2), [
+                0,
                 1,
-                2,
-                3,
-                4,
-                5
+                2
               ])) {
           throw {
                 RE_EXN_ID: "Assert_failure",
@@ -595,12 +595,30 @@ test("Range search test", (function (param) {
                 Error: new Error()
               };
         }
-        if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, -10, -3), [])) {
+        if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, -10, 10), [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ])) {
           throw {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
                   185,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (!Caml_obj.caml_equal(Curry._3(FloatTree.searchRange, tree, -10, -3), [])) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  186,
                   2
                 ],
                 Error: new Error()
@@ -613,7 +631,7 @@ test("Range search test", (function (param) {
               RE_EXN_ID: "Assert_failure",
               _1: [
                 "ImmutableTreeTest.res",
-                186,
+                187,
                 2
               ],
               Error: new Error()
@@ -631,7 +649,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  195,
+                  196,
                   2
                 ],
                 Error: new Error()
@@ -642,7 +660,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  196,
+                  197,
                   2
                 ],
                 Error: new Error()
@@ -653,7 +671,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  197,
+                  198,
                   2
                 ],
                 Error: new Error()
@@ -664,7 +682,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  198,
+                  199,
                   2
                 ],
                 Error: new Error()
@@ -675,7 +693,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  199,
+                  200,
                   2
                 ],
                 Error: new Error()
@@ -686,7 +704,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  200,
+                  201,
                   2
                 ],
                 Error: new Error()
@@ -697,7 +715,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  201,
+                  202,
                   2
                 ],
                 Error: new Error()
@@ -708,7 +726,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  202,
+                  203,
                   2
                 ],
                 Error: new Error()
@@ -719,7 +737,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  203,
+                  204,
                   2
                 ],
                 Error: new Error()
@@ -730,7 +748,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  204,
+                  205,
                   2
                 ],
                 Error: new Error()
@@ -741,7 +759,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  205,
+                  206,
                   2
                 ],
                 Error: new Error()
@@ -752,7 +770,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  207,
+                  208,
                   2
                 ],
                 Error: new Error()
@@ -763,7 +781,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  208,
+                  209,
                   2
                 ],
                 Error: new Error()
@@ -778,7 +796,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  209,
+                  210,
                   2
                 ],
                 Error: new Error()
@@ -795,7 +813,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  210,
+                  211,
                   2
                 ],
                 Error: new Error()
@@ -806,7 +824,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  212,
+                  213,
                   2
                 ],
                 Error: new Error()
@@ -817,7 +835,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  213,
+                  214,
                   2
                 ],
                 Error: new Error()
@@ -832,7 +850,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  214,
+                  215,
                   2
                 ],
                 Error: new Error()
@@ -849,7 +867,7 @@ test("Basic operations test", (function (param) {
                 RE_EXN_ID: "Assert_failure",
                 _1: [
                   "ImmutableTreeTest.res",
-                  215,
+                  216,
                   2
                 ],
                 Error: new Error()
@@ -868,7 +886,7 @@ test("Basic operations test", (function (param) {
               RE_EXN_ID: "Assert_failure",
               _1: [
                 "ImmutableTreeTest.res",
-                216,
+                217,
                 2
               ],
               Error: new Error()

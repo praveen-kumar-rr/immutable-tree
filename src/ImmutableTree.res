@@ -168,8 +168,9 @@ module Make = (C: Comparable): (Tree with type a = C.t) => {
       | Leaf => acc
       | TreeNode(_, l, d, r) =>
         switch (comp(d, start), comp(d, end)) {
-        | (LT, _) | (_, GT) => acc
-        | (EQ, LT) | (GT, EQ) | (EQ, EQ) | (GT, LT) =>
+        | (LT, LT) => r->_searchRange(start, end, acc)
+        | (GT, GT) => l->_searchRange(start, end, acc)
+        | (EQ, LT) | (GT, EQ) | (EQ, EQ) | (EQ, GT) | (LT, EQ) | (GT, LT) | (LT, GT) =>
           let leftResult = l->_searchRange(start, end, acc)
           let nextAcc = list{d, ...leftResult}
           r->_searchRange(start, end, nextAcc)

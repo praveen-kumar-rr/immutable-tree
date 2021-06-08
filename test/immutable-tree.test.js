@@ -92,11 +92,12 @@ test('Traverse tests', () => {
 
 test('Range search tests', () => {
     const compare = (a, b) => a - b;
-    const treeFromArray = fromArray(compare, [1, 2, 3, 4, 5]);
+    const treeFromArray = fromArray(compare, [0, 1, 2, 3, 4, 5]);
 
     assert.deepEqual(treeFromArray.searchRange(2, 5), [2, 3, 4, 5]);
-    assert.deepEqual(treeFromArray.searchRange(-1, 2), [1, 2]);
-    assert.deepEqual(treeFromArray.searchRange(-10, 10), [1, 2, 3, 4, 5]);
+    assert.deepEqual(treeFromArray.searchRange(-1, 2), [0, 1, 2]);
+    assert.deepEqual(treeFromArray.searchRange(0, 2), [0, 1, 2]);
+    assert.deepEqual(treeFromArray.searchRange(-10, 10), [0, 1, 2, 3, 4, 5]);
     assert.deepEqual(treeFromArray.searchRange(-10, -3), []);
     assert.deepEqual(treeFromArray.searchRange(6, 10), []);
 });

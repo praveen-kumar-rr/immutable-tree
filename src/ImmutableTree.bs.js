@@ -314,22 +314,35 @@ function Make(C) {
         if (tree.TAG !== /* TreeNode */0) {
           return Pervasives.failwith("Imbalanced Tree detected");
         }
+        var r = tree._3;
         var d = tree._2;
+        var l = tree._1;
         var match = comp(d, start);
         var match$1 = comp(d, end);
-        if (match >= 2) {
-          return acc;
+        switch (match) {
+          case /* EQ */0 :
+              break;
+          case /* GT */1 :
+              if (match$1 === 1) {
+                _tree = l;
+                continue ;
+              }
+              break;
+          case /* LT */2 :
+              if (match$1 >= 2) {
+                _tree = r;
+                continue ;
+              }
+              break;
+          
         }
-        if (match$1 === 1) {
-          return acc;
-        }
-        var leftResult = _searchRange(tree._1, start, end, acc);
+        var leftResult = _searchRange(l, start, end, acc);
         var nextAcc = {
           hd: d,
           tl: leftResult
         };
         _acc = nextAcc;
-        _tree = tree._3;
+        _tree = r;
         continue ;
       };
     };
