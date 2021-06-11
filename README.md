@@ -157,6 +157,9 @@ _getHeight_:
 _getLength_:  
  Gets length or total number of elements in the tree. An empty tree returns 0. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
 
+_isEmpty_:  
+ Returns true if the tree is empty else false.
+
 ---
 
 ## How does Immutable Tree work?

@@ -215,4 +215,8 @@ module PersonTree = ImmutableTree.Make(
   assert (fromArray([1, 2, 3])->getLength == 3)
   assert (fromArray([1, 2, 3, 4, 5])->getLength == 5)
   assert (fromArray([1, 2, 3, 4, 5])->getLeft->Belt.Option.map(getLength) == 1->Some)
+
+  assert (tree->isEmpty == false)
+  assert (tree->deleteNode(1)->deleteNode(2)->isEmpty == false)
+  assert (tree->deleteNode(1)->deleteNode(2)->deleteNode(3)->isEmpty == true)
 })

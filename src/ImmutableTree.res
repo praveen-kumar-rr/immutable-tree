@@ -26,6 +26,7 @@ module type Tree = {
   let getRight: t => option<t>
   let getHeight: t => int
   let getLength: t => int
+  let isEmpty: t => bool
 }
 
 module type Comparable = {
@@ -714,4 +715,5 @@ module Make = (C: Comparable): (Tree with type a = C.t) => {
 
   let fromArray = Js.Array.reduce((acc, a) => acc->insert(a), Leaf, _)
   let toArray = fold(_, (acc, a) => Js.Array.concat([a], acc), [])
+  let isEmpty = tree => tree == empty()
 }

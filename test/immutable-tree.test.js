@@ -62,6 +62,10 @@ test('Tree operations', () => {
     assert.equal(fromArray(compare, [1, 2, 3]).getLength(), 3)
     assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getLength(), 5)
     assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getLeft().getLength(), 1)
+
+    assert.equal(treeFromArray.isEmpty(), false)
+    assert.equal(treeFromArray.deleteNode(1).deleteNode(2).isEmpty(), false)
+    assert.equal(treeFromArray.deleteNode(1).deleteNode(2).deleteNode(3).isEmpty(), true)
 });
 
 test('Update operation', () => {

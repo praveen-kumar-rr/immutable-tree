@@ -104,6 +104,10 @@ class ImmutableTree {
   getLength() {
     return this.#immTree.getLength(this.#root);
   }
+
+  isEmpty() {
+    return this.#immTree.isEmpty(this.#root);
+  }
 }
 
 const fromArray = (compare, arr) =>

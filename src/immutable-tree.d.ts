@@ -26,6 +26,7 @@ export class ImmutableTree<T> {
   getRight(): ImmutableTree<T> | undefined;
   getHeight(): number;
   getLength(): number;
+  isEmpty(): boolean;
 }
 
 export function fromArray<T>(comp: Comparable<T>, array: T[]): ImmutableTree<T>;

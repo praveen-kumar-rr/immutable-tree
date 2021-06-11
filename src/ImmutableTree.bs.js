@@ -1602,6 +1602,9 @@ function Make(C) {
                   return acc.concat([a]);
                 }), []);
   };
+  var isEmpty = function (tree) {
+    return Caml_obj.caml_equal(tree, /* Leaf */0);
+  };
   return {
           insert: insert,
           search: search,
@@ -1627,7 +1630,8 @@ function Make(C) {
           getLeft: getLeft,
           getRight: getRight,
           getHeight: getHeight,
-          getLength: getLength
+          getLength: getLength,
+          isEmpty: isEmpty
         };
 }
 

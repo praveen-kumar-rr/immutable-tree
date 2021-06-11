@@ -26,6 +26,7 @@ module type Tree = {
   let getRight: t => option<t>
   let getHeight: t => int
   let getLength: t => int
+  let isEmpty: t => bool
 }
 
 module type Comparable = {
