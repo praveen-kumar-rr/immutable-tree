@@ -5,7 +5,7 @@ Immutable, fully persistent, and balanced binary search tree data structure impl
 - Can run in browser and nodejs environments.
 - Can be used in js, ts and rescript projects.
 
-Tests available! Time complexity for insertion, deletion and search is `O(log n)` since this is an implementation of Red Black Tree.
+Tests available! Time complexity for insertion, deletion and search is `O(log n)` since this is an implementation of Red Black Tree. Try it [here](https://praveen-kumar-rr.github.io/immutable-tree-demo/).
 
 ### Installation
 
@@ -16,6 +16,12 @@ Tests available! Time complexity for insertion, deletion and search is `O(log n)
   - Update bs-dependencies in bsconfig.json
     - `"bs-dependencies": ["@rpkumar/immutable-tree"]`
     - Ensure you clean build your rescript project
+
+---
+
+<img src="https://github.com/praveen-kumar-rr/readme-images/blob/main/immutable-tree-demo.gif" alt="demo" width="1000px">
+
+---
 
 ### Usage in JS
 
