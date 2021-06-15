@@ -10,11 +10,11 @@ Tests available! Time complexity for insertion, deletion and search is `O(log n)
 ### Installation
 
 - For JS and TS projects
-  - `npm i @rpkumar/immutable-tree --save`
+  - `npm i immutable-tree-module --save`
 - For Rescript project
-  - `npm i @rpkumar/immutable-tree --save`
+  - `npm i immutable-tree-module --save`
   - Update bs-dependencies in bsconfig.json
-    - `"bs-dependencies": ["@rpkumar/immutable-tree"]`
+    - `"bs-dependencies": ["immutable-tree-module"]`
     - Ensure you clean build your rescript project
 
 ---
@@ -26,7 +26,7 @@ Tests available! Time complexity for insertion, deletion and search is `O(log n)
 ### Usage in JS
 
 ```javascript
-import { fromArray, ImmutableTree } from "@rpkumar/immutable-tree";
+import { fromArray, ImmutableTree } from "immutable-tree-module";
 
 const compare = (a, b) => a - b;
 
@@ -49,7 +49,7 @@ new ImmutableTree(compare)
 ### Usage in TS
 
 ```typescript
-import { fromArray, ImmutableTree } from "@rpkumar/immutable-tree";
+import { fromArray, ImmutableTree } from "immutable-tree-module";
 
 const compare = (a: number, b: number) => a - b;
 
