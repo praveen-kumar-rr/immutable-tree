@@ -19,6 +19,10 @@ class ImmutableTree {
     return this.#immTree.search(this.#root, t);
   }
 
+  searchWithDefault(t, v) {
+    return this.#immTree.searchWithDefault(this.#root, t, v);
+  }
+
   searchRange(t1, t2) {
     return this.#immTree.searchRange(this.#root, t1, t2);
   }

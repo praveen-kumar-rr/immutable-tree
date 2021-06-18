@@ -97,6 +97,9 @@ _insert_:
 _search_:  
  Search for an element
 
+_searchWithDefault_:  
+ A convenient alternate for `search`. Default value provided will be returned if no element was found. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
+
 _searchRange_:  
  Search for all the elements in a particular range. Check [tests](https://github.com/praveen-kumar-rr/immutable-tree/tree/main/test) for usage.
 

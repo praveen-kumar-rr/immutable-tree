@@ -6,6 +6,7 @@ export class ImmutableTree<T> {
   constructor(comp: Comparable<T>, node?: Tree<T>);
   insert: (t: T) => ImmutableTree<T>;
   search: (t: T) => T | undefined;
+  searchWithDefault: (t: T, v: T) => T;
   searchRange: (t1: T, t2: T) => T[];
   deleteNode: (t: T) => ImmutableTree<T>;
   update: (a: T, b: T) => ImmutableTree<T>;

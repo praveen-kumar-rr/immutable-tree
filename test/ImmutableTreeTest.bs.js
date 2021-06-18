@@ -912,14 +912,69 @@ test("Basic operations test", (function (param) {
                 Error: new Error()
               };
         }
-        if (Curry._1(IntTree.isEmpty, Curry._2(IntTree.deleteNode, Curry._2(IntTree.deleteNode, Curry._2(IntTree.deleteNode, tree, 1), 2), 3)) === true) {
+        if (Curry._1(IntTree.isEmpty, Curry._2(IntTree.deleteNode, Curry._2(IntTree.deleteNode, Curry._2(IntTree.deleteNode, tree, 1), 2), 3)) !== true) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  221,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._3(IntTree.searchWithDefault, tree, 10, 1) !== 1) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  223,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._3(IntTree.searchWithDefault, tree, 1, 10) !== 1) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  224,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._3(IntTree.searchWithDefault, tree, 2, 10) !== 2) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  225,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._3(IntTree.searchWithDefault, tree, 3, 10) !== 3) {
+          throw {
+                RE_EXN_ID: "Assert_failure",
+                _1: [
+                  "ImmutableTreeTest.res",
+                  226,
+                  2
+                ],
+                Error: new Error()
+              };
+        }
+        if (Curry._3(IntTree.searchWithDefault, tree, 4, 10) === 10) {
           return ;
         }
         throw {
               RE_EXN_ID: "Assert_failure",
               _1: [
                 "ImmutableTreeTest.res",
-                221,
+                227,
                 2
               ],
               Error: new Error()

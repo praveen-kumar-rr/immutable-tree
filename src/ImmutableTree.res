@@ -3,6 +3,7 @@ module type Tree = {
   type a
   let insert: (t, a) => t
   let search: (t, a) => option<a>
+  let searchWithDefault: (t, a, a) => a
   let searchRange: (t, a, a) => array<a>
   let deleteNode: (t, a) => t
   let update: (t, a, a) => t
@@ -161,6 +162,12 @@ module Make = (C: Comparable): (Tree with type a = C.t) => {
       | GT => search(r, v)
       }
     | DoubleBlack(_, _, _) => raiseImbalance()
+    }
+
+  let searchWithDefault = (tree, v, defaultValue) =>
+    switch tree->search(v) {
+    | None => defaultValue
+    | Some(value) => value
     }
 
   let searchRange = (tree, start, end) => {

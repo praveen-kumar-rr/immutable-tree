@@ -303,6 +303,14 @@ function Make(C) {
       }
     };
   };
+  var searchWithDefault = function (tree, v, defaultValue) {
+    var value = search(tree, v);
+    if (value !== undefined) {
+      return Caml_option.valFromOption(value);
+    } else {
+      return defaultValue;
+    }
+  };
   var searchRange = function (tree, start, end) {
     var _searchRange = function (_tree, start, end, _acc) {
       while(true) {
@@ -1608,6 +1616,7 @@ function Make(C) {
   return {
           insert: insert,
           search: search,
+          searchWithDefault: searchWithDefault,
           searchRange: searchRange,
           deleteNode: deleteNode,
           update: update,

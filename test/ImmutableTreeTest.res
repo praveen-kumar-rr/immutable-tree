@@ -219,4 +219,10 @@ module PersonTree = ImmutableTree.Make(
   assert (tree->isEmpty == false)
   assert (tree->deleteNode(1)->deleteNode(2)->isEmpty == false)
   assert (tree->deleteNode(1)->deleteNode(2)->deleteNode(3)->isEmpty == true)
+
+  assert (tree->searchWithDefault(10, 1) == 1)
+  assert (tree->searchWithDefault(1, 10) == 1)
+  assert (tree->searchWithDefault(2, 10) == 2)
+  assert (tree->searchWithDefault(3, 10) == 3)
+  assert (tree->searchWithDefault(4, 10) == 10)
 })

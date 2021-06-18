@@ -52,20 +52,26 @@ test('Tree operations', () => {
     // Here 100 cannot be equal to 10. So the update never happened
     assert.notEqual(treeFromArray.update(10, 100).search(10), 10);
 
-    assert.equal(fromArray(compare, []).getHeight(), 0)
-    assert.equal(fromArray(compare, [1]).getHeight(), 1)
-    assert.equal(fromArray(compare, [1, 2, 3]).getHeight(), 2)
-    assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getHeight(), 3)
+    assert.equal(fromArray(compare, []).getHeight(), 0);
+    assert.equal(fromArray(compare, [1]).getHeight(), 1);
+    assert.equal(fromArray(compare, [1, 2, 3]).getHeight(), 2);
+    assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getHeight(), 3);
 
-    assert.equal(fromArray(compare, []).getLength(), 0)
-    assert.equal(fromArray(compare, [1]).getLength(), 1)
-    assert.equal(fromArray(compare, [1, 2, 3]).getLength(), 3)
-    assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getLength(), 5)
-    assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getLeft().getLength(), 1)
+    assert.equal(fromArray(compare, []).getLength(), 0);
+    assert.equal(fromArray(compare, [1]).getLength(), 1);
+    assert.equal(fromArray(compare, [1, 2, 3]).getLength(), 3);
+    assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getLength(), 5);
+    assert.equal(fromArray(compare, [1, 2, 3, 4, 5]).getLeft().getLength(), 1);
 
-    assert.equal(treeFromArray.isEmpty(), false)
-    assert.equal(treeFromArray.deleteNode(1).deleteNode(2).isEmpty(), false)
-    assert.equal(treeFromArray.deleteNode(1).deleteNode(2).deleteNode(3).isEmpty(), true)
+    assert.equal(treeFromArray.isEmpty(), false);
+    assert.equal(treeFromArray.deleteNode(10).deleteNode(20).isEmpty(), false);
+    assert.equal(treeFromArray.deleteNode(10).deleteNode(20).deleteNode(30).isEmpty(), true);
+
+    assert.equal(treeFromArray.searchWithDefault(1, 10), 10);
+    assert.equal(treeFromArray.searchWithDefault(10, 1), 10);
+    assert.equal(treeFromArray.searchWithDefault(20, 1), 20);
+    assert.equal(treeFromArray.searchWithDefault(30, 1), 30);
+    assert.equal(treeFromArray.searchWithDefault(40, 1), 1);
 });
 
 test('Update operation', () => {
