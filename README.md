@@ -192,5 +192,9 @@ Well it has all benefits as any other immutable data structure.
 - Time travelling
 - Write pure, side effect free functions
 
+### Issues
+
+Found issue? Please report it [here](https://github.com/praveen-kumar-rr/immutable-tree/issues).
+
 **Note :**
 Internal representation of the tree might not be readable. So for logging the tree, please use the in built functions like `printTreeAsc` or `printTreeDesc`.
