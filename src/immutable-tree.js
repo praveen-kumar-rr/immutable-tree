@@ -1,82 +1,88 @@
-const immutableTree = require('./ImmutableTree.bs.js');
+const immutableTree = require("./ImmutableTree.bs.js");
 
 class ImmutableTree {
-  #immTree;
-  #root;
-  #comp
+  _immTree;
+  _root;
+  _comp;
 
   constructor(comp, node) {
-    this.#comp = comp;
-    this.#immTree = immutableTree.Make({ compare: comp });
-    this.#root = node || this.#immTree.empty();
+    this._comp = comp;
+    this._immTree = immutableTree.Make({ compare: comp });
+    this._root = node || this._immTree.empty();
   }
 
   insert(t) {
-    return new ImmutableTree(this.#comp, this.#immTree.insert(this.#root, t));
+    return new ImmutableTree(this._comp, this._immTree.insert(this._root, t));
   }
 
   search(t) {
-    return this.#immTree.search(this.#root, t);
+    return this._immTree.search(this._root, t);
   }
 
   searchWithDefault(t, v) {
-    return this.#immTree.searchWithDefault(this.#root, t, v);
+    return this._immTree.searchWithDefault(this._root, t, v);
   }
 
   searchRange(t1, t2) {
-    return this.#immTree.searchRange(this.#root, t1, t2);
+    return this._immTree.searchRange(this._root, t1, t2);
   }
 
   deleteNode(t) {
-    return new ImmutableTree(this.#comp, this.#immTree.deleteNode(this.#root, t));
+    return new ImmutableTree(
+      this._comp,
+      this._immTree.deleteNode(this._root, t)
+    );
   }
 
   update(old, next) {
-    return new ImmutableTree(this.#comp, this.#immTree.update(this.#root, old, next));
+    return new ImmutableTree(
+      this._comp,
+      this._immTree.update(this._root, old, next)
+    );
   }
 
   printTreeAsc() {
-    this.#immTree.printTreeAsc(this.#root);
+    this._immTree.printTreeAsc(this._root);
   }
 
   printTreeDesc() {
-    this.#immTree.printTreeDesc(this.#root);
+    this._immTree.printTreeDesc(this._root);
   }
 
   getColor() {
-    return this.#immTree.getColor(this.#root);
+    return this._immTree.getColor(this._root);
   }
 
   getData() {
-    return this.#immTree.getData(this.#root);
+    return this._immTree.getData(this._root);
   }
 
   getMin() {
-    return this.#immTree.getMin(this.#root);
+    return this._immTree.getMin(this._root);
   }
 
   getMax() {
-    return this.#immTree.getMax(this.#root);
+    return this._immTree.getMax(this._root);
   }
 
   toArray() {
-    return this.#immTree.toArray(this.#root);
+    return this._immTree.toArray(this._root);
   }
 
   traverseInOrder(fn, value) {
-    return this.#immTree.traverseInOrder(this.#root, fn, value);
+    return this._immTree.traverseInOrder(this._root, fn, value);
   }
 
   traversePreOrder(fn, value) {
-    return this.#immTree.traversePreOrder(this.#root, fn, value);
+    return this._immTree.traversePreOrder(this._root, fn, value);
   }
 
   traversePostOrder(fn, value) {
-    return this.#immTree.traversePostOrder(this.#root, fn, value);
+    return this._immTree.traversePostOrder(this._root, fn, value);
   }
 
   fold(fn, value) {
-    return this.#immTree.fold(this.#root, fn, value);
+    return this._immTree.fold(this._root, fn, value);
   }
 
   foldLeft(fn, value) {
@@ -84,33 +90,29 @@ class ImmutableTree {
   }
 
   foldRight(fn, value) {
-    return this.#immTree.foldRight(this.#root, fn, value);
+    return this._immTree.foldRight(this._root, fn, value);
   }
 
   getLeft() {
-    const left = this.#immTree.getLeft(this.#root);
-    return left
-      ? new ImmutableTree(this.#comp, left)
-      : undefined
+    const left = this._immTree.getLeft(this._root);
+    return left ? new ImmutableTree(this._comp, left) : undefined;
   }
 
   getRight() {
-    const right = this.#immTree.getRight(this.#root);
-    return right
-      ? new ImmutableTree(this.#comp, right)
-      : undefined
+    const right = this._immTree.getRight(this._root);
+    return right ? new ImmutableTree(this._comp, right) : undefined;
   }
 
   getHeight() {
-    return this.#immTree.getHeight(this.#root);
+    return this._immTree.getHeight(this._root);
   }
 
   getLength() {
-    return this.#immTree.getLength(this.#root);
+    return this._immTree.getLength(this._root);
   }
 
   isEmpty() {
-    return this.#immTree.isEmpty(this.#root);
+    return this._immTree.isEmpty(this._root);
   }
 }
 
@@ -119,5 +121,5 @@ const fromArray = (compare, arr) =>
 
 module.exports = {
   ImmutableTree,
-  fromArray
+  fromArray,
 };
