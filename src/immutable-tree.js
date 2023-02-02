@@ -1,10 +1,6 @@
 const immutableTree = require("./ImmutableTree.bs.js");
 
 class ImmutableTree {
-  _immTree;
-  _root;
-  _comp;
-
   constructor(comp, node) {
     this._comp = comp;
     this._immTree = immutableTree.Make({ compare: comp });

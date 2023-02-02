@@ -1,6 +1,6 @@
 {
   "name": "immutable-tree-module",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "main": "src/immutable-tree.js",
   "scripts": {
     "build": "rescript",
